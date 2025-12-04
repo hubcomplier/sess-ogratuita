@@ -118,7 +118,7 @@
       background: rgba(0, 0, 0, 0.6);
       backdrop-filter: blur(12px) saturate(180%);
       border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-      padding: 1rem 2rem;
+      padding: 0.8rem 2rem;
       position: fixed;
       top: 0;
       left: 0;
@@ -137,17 +137,48 @@
     .logo {
       display: flex;
       align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      font-size: 1.8rem;
-      color: var(--secondary);
       text-decoration: none;
+      transition: all 0.3s;
+    }
+    
+    .logo img {
+      height: 50px;
+      width: auto;
       transition: all 0.3s;
     }
     
     .logo:hover {
       transform: scale(1.05);
-      text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    }
+    
+    .logo:hover img {
+      filter: drop-shadow(0 0 15px rgba(212, 175, 55, 0.6));
+    }
+    
+    .header-buttons {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .biblioteca-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #000;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 0.7rem 1.5rem;
+      background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
+      border-radius: 30px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    }
+    
+    .biblioteca-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
     }
     
     .back-btn {
@@ -156,7 +187,7 @@
       gap: 8px;
       color: var(--lux);
       text-decoration: none;
-      font-size: 1.1rem;
+      font-size: 1rem;
       padding: 0.7rem 1.5rem;
       border: 1px solid rgba(212, 175, 55, 0.3);
       border-radius: 30px;
@@ -252,27 +283,18 @@
       z-index: 1;
     }
     
-    .form-header-icon {
-      width: 80px;
-      height: 80px;
-      background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .form-header-logo {
+      width: 120px;
+      height: auto;
       margin: 0 auto 1.5rem;
-      box-shadow: 0 10px 40px rgba(212, 175, 55, 0.4);
+      display: block;
+      filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.4));
       animation: float 3s ease-in-out infinite;
     }
     
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-10px); }
-    }
-    
-    .form-header-icon i {
-      font-size: 2.2rem;
-      color: #000;
     }
     
     .form-header h1 {
@@ -313,6 +335,32 @@
     
     .form-header p strong {
       color: var(--secondary);
+    }
+    
+    /* ========== WHATSAPP INDICATOR ========== */
+    .whatsapp-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background: rgba(37, 211, 102, 0.1);
+      border: 1px solid rgba(37, 211, 102, 0.3);
+      border-radius: 30px;
+      width: fit-content;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .whatsapp-indicator i {
+      color: #25D366;
+      font-size: 1.3rem;
+    }
+    
+    .whatsapp-indicator span {
+      color: var(--lux);
+      font-size: 0.95rem;
     }
     
     /* ========== BENEFITS STRIP ========== */
@@ -493,8 +541,8 @@
     .botao-enviar {
       width: 100%;
       padding: 1.3rem 2rem;
-      background: linear-gradient(135deg, var(--secondary), var(--secondary-dark));
-      color: #000;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: #fff;
       border: none;
       border-radius: 50px;
       font-family: inherit;
@@ -503,8 +551,8 @@
       cursor: pointer;
       transition: all 0.3s;
       box-shadow: 
-        0 10px 40px rgba(212, 175, 55, 0.4),
-        0 0 0 0 rgba(212, 175, 55, 0.4);
+        0 10px 40px rgba(37, 211, 102, 0.4),
+        0 0 0 0 rgba(37, 211, 102, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -539,12 +587,16 @@
     .botao-enviar:hover {
       transform: translateY(-4px);
       box-shadow: 
-        0 15px 50px rgba(212, 175, 55, 0.5),
-        0 0 0 0 rgba(212, 175, 55, 0.4);
+        0 15px 50px rgba(37, 211, 102, 0.5),
+        0 0 0 0 rgba(37, 211, 102, 0.4);
     }
     
     .botao-enviar:active {
       transform: translateY(-2px);
+    }
+    
+    .botao-enviar i {
+      font-size: 1.5rem;
     }
     
     /* ========== INFO BOX ========== */
@@ -644,6 +696,51 @@
       transition: width 0.1s;
     }
     
+    /* ========== LOADING OVERLAY ========== */
+    .loading-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      z-index: 9999;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .loading-overlay.active {
+      display: flex;
+    }
+    
+    .loading-spinner {
+      width: 60px;
+      height: 60px;
+      border: 4px solid rgba(212, 175, 55, 0.2);
+      border-top-color: var(--secondary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    
+    .loading-text {
+      color: var(--lux);
+      font-size: 1.3rem;
+      text-align: center;
+    }
+    
+    .loading-text i {
+      color: #25D366;
+      margin-right: 8px;
+    }
+    
     /* ========== RESPONSIVE ========== */
     @media (max-width: 768px) {
       .main-content {
@@ -655,13 +752,12 @@
         border-radius: 20px;
       }
       
-      .form-header-icon {
-        width: 65px;
-        height: 65px;
+      .form-header-logo {
+        width: 100px;
       }
       
-      .form-header-icon i {
-        font-size: 1.8rem;
+      .logo img {
+        height: 40px;
       }
       
       .benefits-strip {
@@ -692,8 +788,28 @@
         display: none;
       }
       
+      .biblioteca-btn span {
+        display: none;
+      }
+      
+      .biblioteca-btn {
+        padding: 0.6rem 1rem;
+      }
+      
       .info-box ul {
         grid-template-columns: 1fr;
+      }
+      
+      .header-buttons {
+        gap: 0.5rem;
+      }
+      
+      .whatsapp-indicator {
+        padding: 0.6rem 1rem;
+      }
+      
+      .whatsapp-indicator span {
+        font-size: 0.85rem;
       }
     }
     
@@ -731,6 +847,15 @@
 </head>
 <body>
 
+  <!-- LOADING OVERLAY -->
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">
+      <i class="fab fa-whatsapp"></i>
+      Abrindo WhatsApp...
+    </div>
+  </div>
+
   <!-- SCROLL PROGRESS -->
   <div class="scroll-progress"></div>
 
@@ -761,13 +886,22 @@
   <!-- HEADER -->
   <header>
     <div class="header-container">
+      <!-- LOGO OFICIAL -->
       <a href="https://hubcomplier.github.io/AKASHA/" class="logo">
-        <i class="fas fa-infinity"></i> AKASHA
+        <img src="https://i.ibb.co/Fbxk6mQ3/Design-sem-nome-2.png" alt="Akasha Logo">
       </a>
-      <a href="https://hubcomplier.github.io/AKASHA/" class="back-btn">
-        <i class="fas fa-arrow-left"></i>
-        <span>Voltar ao Site</span>
-      </a>
+      
+      <!-- BOTÕES DO HEADER -->
+      <div class="header-buttons">
+        <a href="https://hubcomplier.github.io/bibliotecadeaudios/" target="_blank" class="biblioteca-btn">
+          <i class="fas fa-headphones"></i>
+          <span>Biblioteca Free</span>
+        </a>
+        <a href="https://hubcomplier.github.io/AKASHA/" class="back-btn">
+          <i class="fas fa-arrow-left"></i>
+          <span>Voltar ao Site</span>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -783,9 +917,9 @@
 
       <!-- HEADER DO FORMULÁRIO -->
       <div class="form-header">
-        <div class="form-header-icon">
-          <i class="fas fa-sun"></i>
-        </div>
+        <!-- LOGO OFICIAL NO CENTRO -->
+        <img src="https://i.ibb.co/Fbxk6mQ3/Design-sem-nome-2.png" alt="Akasha Logo" class="form-header-logo">
+        
         <h1>Sessão de Alinhamento</h1>
         <div class="subtitle">
           <i class="fas fa-star"></i>
@@ -793,6 +927,12 @@
           <i class="fas fa-star"></i>
         </div>
         <p>Preencha o formulário abaixo para garantir sua vaga na nossa sessão exclusiva e descobrir como <strong>acelerar sua transformação</strong>.</p>
+        
+        <!-- WHATSAPP INDICATOR -->
+        <div class="whatsapp-indicator">
+          <i class="fab fa-whatsapp"></i>
+          <span>Resposta rápida via WhatsApp</span>
+        </div>
       </div>
 
       <!-- BENEFÍCIOS -->
@@ -815,14 +955,8 @@
         </div>
       </div>
 
-      <!-- FORMULÁRIO -->
-      <form class="form-akasha" action="https://formsubmit.co/akashaguardia@gmail.com" method="POST">
-        
-        <!-- Hidden fields para FormSubmit -->
-        <input type="hidden" name="_subject" value="🎁 Nova Solicitação - Sessão Gratuita de Alinhamento">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="hidden" name="_next" value="https://hubcomplier.github.io/AKASHA/obrigado.html">
+      <!-- FORMULÁRIO - ENVIA PARA WHATSAPP -->
+      <form class="form-akasha" id="formAkasha" onsubmit="enviarWhatsApp(event)">
 
         <!-- 1. NOME COMPLETO -->
         <div class="form-grupo">
@@ -830,7 +964,7 @@
             <i class="fas fa-user"></i>
             Nome Completo <span class="obrigatorio">*</span>
           </label>
-          <input type="text" name="nome" required placeholder="Seu nome completo">
+          <input type="text" name="nome" id="nome" required placeholder="Seu nome completo">
         </div>
 
         <!-- 2. E-MAIL -->
@@ -839,7 +973,7 @@
             <i class="fas fa-envelope"></i>
             E-mail <span class="obrigatorio">*</span>
           </label>
-          <input type="email" name="email" required placeholder="seu@email.com">
+          <input type="email" name="email" id="email" required placeholder="seu@email.com">
         </div>
 
         <!-- 3. WHATSAPP -->
@@ -848,7 +982,7 @@
             <i class="fab fa-whatsapp"></i>
             WhatsApp <span class="obrigatorio">*</span>
           </label>
-          <input type="tel" name="whatsapp" required placeholder="(00) 00000-0000">
+          <input type="tel" name="whatsapp" id="whatsapp" required placeholder="(00) 00000-0000">
         </div>
 
         <div class="form-divider"></div>
@@ -859,7 +993,7 @@
             <i class="fas fa-mountain"></i>
             Qual é o maior desafio que você enfrenta atualmente? <span class="obrigatorio">*</span>
           </label>
-          <textarea name="desafio" required placeholder="Descreva seu principal desafio... (relacionamentos, carreira, saúde emocional, abundância, etc.)"></textarea>
+          <textarea name="desafio" id="desafio" required placeholder="Descreva seu principal desafio... (relacionamentos, carreira, saúde emocional, abundância, etc.)"></textarea>
         </div>
 
         <!-- 5. COMO CONHECEU -->
@@ -868,8 +1002,8 @@
             <i class="fas fa-compass"></i>
             Como você conheceu a Akasha?
           </label>
-          <select name="conheceu">
-            <option value="" selected>Escolha uma opção</option>
+          <select name="conheceu" id="conheceu">
+            <option value="Não informado" selected>Escolha uma opção</option>
             <option value="Instagram">Instagram</option>
             <option value="YouTube">YouTube</option>
             <option value="TikTok">TikTok</option>
@@ -885,7 +1019,7 @@
             <i class="fas fa-lightbulb"></i>
             O que você espera dessa sessão? <span class="obrigatorio">*</span>
           </label>
-          <textarea name="expectativas" required placeholder="Ex: Clareza sobre minha situação, entender bloqueios, receber direcionamento..."></textarea>
+          <textarea name="expectativas" id="expectativas" required placeholder="Ex: Clareza sobre minha situação, entender bloqueios, receber direcionamento..."></textarea>
         </div>
 
         <div class="form-divider"></div>
@@ -896,7 +1030,7 @@
             <i class="fas fa-chart-line"></i>
             Em qual momento você se encontra? <span class="obrigatorio">*</span>
           </label>
-          <select name="momento_atual" required>
+          <select name="momento" id="momento" required>
             <option value="" selected>Escolha uma opção</option>
             <option value="Início da jornada - Buscando autoconhecimento">Início da jornada - Buscando autoconhecimento</option>
             <option value="Em transição - Passando por mudanças">Em transição - Passando por mudanças</option>
@@ -913,14 +1047,14 @@
           </label>
           <div class="radio-options">
             <div class="radio-option">
-              <input type="radio" id="sim" name="interesse_aprofundar" value="Sim, tenho interesse" required>
+              <input type="radio" id="sim" name="interesse" value="Sim, tenho interesse" required>
               <label for="sim">
                 <i class="fas fa-check"></i>
                 Sim, tenho interesse
               </label>
             </div>
             <div class="radio-option">
-              <input type="radio" id="talvez" name="interesse_aprofundar" value="Talvez, quero conhecer primeiro">
+              <input type="radio" id="talvez" name="interesse" value="Talvez, quero conhecer primeiro">
               <label for="talvez">
                 <i class="fas fa-question"></i>
                 Quero conhecer primeiro
@@ -935,23 +1069,23 @@
             <i class="fas fa-calendar-alt"></i>
             Qual sua disponibilidade para a sessão? <span class="obrigatorio">*</span>
           </label>
-          <textarea name="disponibilidade" required placeholder="Ex: Segunda a sexta das 19h às 21h, ou sábados pela manhã..."></textarea>
+          <textarea name="disponibilidade" id="disponibilidade" required placeholder="Ex: Segunda a sexta das 19h às 21h, ou sábados pela manhã..."></textarea>
         </div>
 
-        <!-- BOTÃO DE ENVIO -->
+        <!-- BOTÃO DE ENVIO - WHATSAPP -->
         <button type="submit" class="botao-enviar">
-          <i class="fas fa-paper-plane"></i>
-          Garantir Minha Vaga Gratuita
+          <i class="fab fa-whatsapp"></i>
+          Enviar via WhatsApp
         </button>
 
         <!-- INFO BOX -->
         <div class="info-box">
           <h4><i class="fas fa-shield-alt"></i> O que acontece depois?</h4>
           <ul>
-            <li>Você receberá confirmação por e-mail</li>
-            <li>Entraremos em contato via WhatsApp</li>
-            <li>Agendaremos o melhor horário para você</li>
-            <li>A sessão é 100% online e gratuita</li>
+            <li>Você será direcionado ao WhatsApp</li>
+            <li>Confirme o envio da mensagem</li>
+            <li>Responderemos em até 24 horas</li>
+            <li>Agendaremos sua sessão gratuita</li>
           </ul>
         </div>
 
@@ -973,6 +1107,84 @@
 
   <!-- SCRIPTS -->
   <script>
+    // Número do WhatsApp (Brasil)
+    const WHATSAPP_NUMBER = '5571992784660';
+    
+    // Função para enviar para WhatsApp
+    function enviarWhatsApp(event) {
+      event.preventDefault();
+      
+      // Mostrar loading
+      document.getElementById('loadingOverlay').classList.add('active');
+      
+      // Coletar dados do formulário
+      const nome = document.getElementById('nome').value;
+      const email = document.getElementById('email').value;
+      const whatsapp = document.getElementById('whatsapp').value;
+      const desafio = document.getElementById('desafio').value;
+      const conheceu = document.getElementById('conheceu').value;
+      const expectativas = document.getElementById('expectativas').value;
+      const momento = document.getElementById('momento').value;
+      const interesse = document.querySelector('input[name="interesse"]:checked')?.value || 'Não informado';
+      const disponibilidade = document.getElementById('disponibilidade').value;
+      
+      // Data e hora atual
+      const agora = new Date();
+      const dataHora = agora.toLocaleString('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+      
+      // Montar mensagem formatada
+      const mensagem = `
+🌟 *NOVA SOLICITAÇÃO - SESSÃO GRATUITA* 🌟
+━━━━━━━━━━━━━━━━━━━━━━━━
+
+📅 *Data/Hora:* ${dataHora}
+
+👤 *DADOS DO LEAD*
+━━━━━━━━━━━━━━━━━━━━━━━━
+• *Nome:* ${nome}
+• *E-mail:* ${email}
+• *WhatsApp:* ${whatsapp}
+
+🎯 *INFORMAÇÕES DA SESSÃO*
+━━━━━━━━━━━━━━━━━━━━━━━━
+• *Maior Desafio:*
+${desafio}
+
+• *Como Conheceu:* ${conheceu}
+
+• *Expectativas:*
+${expectativas}
+
+• *Momento Atual:* ${momento}
+
+• *Interesse em Aprofundar:* ${interesse}
+
+• *Disponibilidade:*
+${disponibilidade}
+
+━━━━━━━━━━━━━━━━━━━━━━━━
+✨ _Enviado via Formulário Akasha_
+      `.trim();
+      
+      // Codificar mensagem para URL
+      const mensagemCodificada = encodeURIComponent(mensagem);
+      
+      // URL do WhatsApp
+      const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${mensagemCodificada}`;
+      
+      // Aguardar um pouco e abrir WhatsApp
+      setTimeout(() => {
+        document.getElementById('loadingOverlay').classList.remove('active');
+        window.open(whatsappURL, '_blank');
+      }, 1500);
+    }
+    
     // Scroll Progress Bar
     window.addEventListener('scroll', () => {
       const scrollProgress = document.querySelector('.scroll-progress');
@@ -983,7 +1195,7 @@
     });
 
     // Máscara para telefone
-    const phoneInput = document.querySelector('input[name="whatsapp"]');
+    const phoneInput = document.getElementById('whatsapp');
     if (phoneInput) {
       phoneInput.addEventListener('input', (e) => {
         let value = e.target.value.replace(/\D/g, '');
